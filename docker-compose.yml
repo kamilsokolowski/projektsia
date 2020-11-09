@@ -1,12 +1,24 @@
 version: "3.8"
-   
+
 services:
-  web:
+  web_api:
     build: .
-    command: python sia/manage.py runserver 0.0.0.0:8000
+    command: bash -c "python sia/manage.py migrate &&
+      python sia/manage.py runserver 0.0.0.0:8000 "
     volumes:
       - .:/code
     ports:
-      - "8000:8000"
+      - 8000:8000
+    depends_on:
+      - db
+  db:
+    image: postgres:latest
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=hello_django
+      - POSTGRES_PASSWORD=hello_django
+      - POSTGRES_DB=sia
 
-
+volumes:
+  postgres_data:
