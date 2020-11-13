@@ -4,13 +4,13 @@ from django.db import models
 class OcenyZgloszen(models.Model):
     ocena_zgloszenia_id = models.AutoField(primary_key=True)
     zgloszenie = models.ForeignKey('Zgloszenia', models.DO_NOTHING)
-    user = models.ForeignKey('Users', models.DO_NOTHING)
+    user = models.ForeignKey('Uzytkownik', models.DO_NOTHING)
     ocena = models.IntegerField()
     komentarz = models.TextField()
 
     class Meta:
-        managed = False
-        db_table = 'oceny_zgloszen'
+        managed = True
+        db_table = 'OcenyZgloszen'
 
 
 class RodzajZgloszenia(models.Model):
@@ -18,11 +18,11 @@ class RodzajZgloszenia(models.Model):
     waznosc = models.IntegerField()
 
     class Meta:
-        managed = False
-        db_table = 'rodzaj_zgloszenia'
+        managed = True
+        db_table = 'RodzajZgloszenia'
 
 
-class Users(models.Model):
+class Uzytkownik(models.Model):
     user_id = models.AutoField(primary_key=True)
     nick = models.TextField()
     imie = models.TextField()
@@ -34,13 +34,13 @@ class Users(models.Model):
     awatar = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
-        db_table = 'users'
+        managed = True
+        db_table = 'Uzytkownik'
 
 
 class Zgloszenia(models.Model):
     zgloszenie_id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(Users, models.DO_NOTHING)
+    user = models.ForeignKey('Uzytkownik', models.DO_NOTHING)
     sciezka_do_pliku = models.TextField()
     wspolrzedne = models.TextField()
     data_czas = models.DateTimeField()
@@ -48,5 +48,5 @@ class Zgloszenia(models.Model):
     opis = models.TextField()
 
     class Meta:
-        managed = False
-        db_table = 'zgloszenia'
+        managed = True
+        db_table = 'Zgloszenia'
