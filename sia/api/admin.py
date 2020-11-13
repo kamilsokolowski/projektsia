@@ -1,3 +1,9 @@
+from .models import *
+
 from django.contrib import admin
 
-# Register your models here.
+admin.site.register(OcenyZgloszen)
+admin.site.register(RodzajZgloszenia)
+admin.site.register(Uzytkownik)
+admin.site.register(Zgloszenia)
+

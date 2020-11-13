@@ -1,19 +1,29 @@
+from .models import *
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
 from rest_framework.serializers import Serializer, FileField
 
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class UzytkownikSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = User
-        fields = ['url', 'username', 'email', 'groups']
+        model = Uzytkownik
+        fields = '__all__'
 
 
-class GroupSerializer(serializers.HyperlinkedModelSerializer):
+class OcenyZgloszenSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Group
-        fields = ['url', 'name']
+        model = OcenyZgloszen
+        fields = '__all__'
 
+class RodzajZgloszeniaSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = RodzajZgloszenia
+        fields = '__all__'
+
+class ZgloszeniaSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Zgloszenia
+        fields = '__all__'
 
 class UploadSerializer(serializers.Serializer):
     file_uploaded = FileField()
