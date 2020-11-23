@@ -54,7 +54,7 @@ class Zgloszenia(models.Model):
     opis = models.TextField()
 
     def __str__(self):
-        return "Zgloszenie nr {}, Opis : {}".format(str(self.zgloszenie_id), str(self.opis))
+        return "Zgloszenie nr {}, Opis : {}".format(str(self.zgloszenie_id),str(self.opis))
 
     class Meta:
         managed = True
