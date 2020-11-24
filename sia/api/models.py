@@ -54,8 +54,18 @@ class Zgloszenia(models.Model):
     opis = models.TextField()
 
     def __str__(self):
-        return "Zgloszenie nr {}, Opis : {}".format(str(self.zgloszenie_id),str(self.opis))
+        return "Zgloszenie nr {}, Opis : {}, sciezka: {}".format(str(self.zgloszenie_id), str(self.opis), str(self.sciezka_do_pliku))
 
     class Meta:
         managed = True
         db_table = 'Zgloszenia'
+
+class Miejsce(models.Model):
+
+    nazwa = models.CharField(max_length=255)
+
+    szerokosc = models.DecimalField(
+                max_digits=9, decimal_places=6, null=True, blank=True)
+
+    dlugosc = models.DecimalField(
+                max_digits=9, decimal_places=6, null=True, blank=True)
