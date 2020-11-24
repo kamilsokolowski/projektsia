@@ -30,5 +30,3 @@ class MiejsceAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Miejsce, MiejsceAdmin)
-
-admin.site.register(Miejsce, MiejsceAdmin)
