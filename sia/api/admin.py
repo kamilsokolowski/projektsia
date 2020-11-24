@@ -7,14 +7,14 @@ admin.site.register(RodzajZgloszenia)
 admin.site.register(Uzytkownik)
 admin.site.register(Zgloszenia)
 
-#admin.site.register(Miejsce)
+
 class MiejsceAdmin(admin.ModelAdmin):
-    list_display = ('nazwa', 'szerokosc', 'dlugosc',)
-    search_fields = ('nazwa',)
+    list_display = ('name', 'latitude', 'longitude',)
+    search_fields = ('name',)
 
     fieldsets = (
         (None, {
-            'fields': ( 'nazwa', 'szerokosc', 'dlugosc',)
+            'fields': ( 'name', 'latitude', 'longitude',)
         }),
     )
 
@@ -28,5 +28,7 @@ class MiejsceAdmin(admin.ModelAdmin):
                 'js/admin/location_picker.js',
             )
 
+
+admin.site.register(Miejsce, MiejsceAdmin)
 
 admin.site.register(Miejsce, MiejsceAdmin)
