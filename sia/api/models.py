@@ -12,9 +12,6 @@ class OcenyZgloszen(models.Model):
         managed = True
         db_table = 'OcenyZgloszen'
 
-    def __str__(self):
-        return "Ocena o nr {} Ocena: {}".format(str(self.ocena_zgloszenia_id), str(self.ocena))
-
 
 class RodzajZgloszenia(models.Model):
     kategoria = models.TextField()
@@ -40,9 +37,6 @@ class Uzytkownik(models.Model):
         managed = True
         db_table = 'Uzytkownik'
 
-    def __str__(self):
-        return "Uzytkownik {} {} o nicku {} z user_id {}".format(str(self.imie), str(self.nazwisko), str(self.nick), str(self.user_id))
-
 
 class Zgloszenia(models.Model):
     zgloszenie_id = models.AutoField(primary_key=True)
@@ -53,19 +47,6 @@ class Zgloszenia(models.Model):
     akceptacja = models.IntegerField()
     opis = models.TextField()
 
-    def __str__(self):
-        return "Zgloszenie nr {}, Opis : {}, sciezka: {}".format(str(self.zgloszenie_id), str(self.opis), str(self.sciezka_do_pliku))
-
     class Meta:
         managed = True
         db_table = 'Zgloszenia'
-
-class Miejsce(models.Model):
-
-    nazwa = models.CharField(max_length=255)
-
-    szerokosc = models.DecimalField(
-                max_digits=9, decimal_places=6, null=True, blank=True)
-
-    dlugosc = models.DecimalField(
-                max_digits=9, decimal_places=6, null=True, blank=True)
