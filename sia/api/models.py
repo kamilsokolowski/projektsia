@@ -43,12 +43,21 @@ class Uzytkownik(models.Model):
     def __str__(self):
         return "Uzytkownik {} {} o nicku {} z user_id {}".format(str(self.imie), str(self.nazwisko), str(self.nick), str(self.user_id))
 
+class Miejsce(models.Model):
+    latitude = models.DecimalField(
+                max_digits=9, decimal_places=6, null=True, blank=True)
+    longitude = models.DecimalField(
+                max_digits=9, decimal_places=6, null=True, blank=True)
+
 
 class Zgloszenia(models.Model):
     zgloszenie_id = models.AutoField(primary_key=True)
     user = models.ForeignKey('Uzytkownik', models.DO_NOTHING)
     sciezka_do_pliku = models.TextField()
-    wspolrzedne = models.TextField()
+    latitude = models.DecimalField(
+                max_digits=9, decimal_places=6, null=True, blank=True)
+    longitude = models.DecimalField(
+                max_digits=9, decimal_places=6, null=True, blank=True)
     data_czas = models.DateTimeField()
     akceptacja = models.IntegerField()
     opis = models.TextField()
@@ -60,15 +69,4 @@ class Zgloszenia(models.Model):
         managed = True
         db_table = 'Zgloszenia'
 
-from django.db import models
 
-
-class Miejsce(models.Model):
-
-    name = models.CharField(max_length=255)
-
-    latitude = models.DecimalField(
-                max_digits=9, decimal_places=6, null=True, blank=True)
-
-    longitude = models.DecimalField(
-                max_digits=9, decimal_places=6, null=True, blank=True)

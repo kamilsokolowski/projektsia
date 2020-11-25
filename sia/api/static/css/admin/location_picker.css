@@ -1,6 +1,6 @@
 .setloc-map {
-    max-width: 100%;
+    width: 400px;
     height: 400px;
     margin-top: 1em;
-    border: 1px solid #eee;
+    border: 5px solid #eee;
 }
