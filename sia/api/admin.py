@@ -2,13 +2,14 @@ from .models import *
 
 from django.contrib import admin
 from django.conf import settings
+
+
 admin.site.register(OcenyZgloszen)
 admin.site.register(RodzajZgloszenia)
 admin.site.register(Uzytkownik)
 
-
 class ZgloszenieAdmin(admin.ModelAdmin):
-    list_display = ('user','sciezka_do_pliku','opis', 'latitude', 'longitude',)
+    list_display = ('user', 'sciezka_do_pliku','opis', 'latitude', 'longitude',)
 
     fieldsets = (
         (None, {
