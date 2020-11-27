@@ -41,7 +41,7 @@ class Uzytkownik(models.Model):
         db_table = 'Uzytkownik'
 
     def __str__(self):
-        return "Uzytkownik {} {} o nicku {} z user_id {}".format(str(self.imie), str(self.nazwisko), str(self.nick), str(self.user_id))
+        return f"{self.nick}"
 
 class Miejsce(models.Model):
     latitude = models.DecimalField(
@@ -52,7 +52,8 @@ class Miejsce(models.Model):
 
 class Zgloszenia(models.Model):
     zgloszenie_id = models.AutoField(primary_key=True)
-    user = models.ForeignKey('Uzytkownik', models.DO_NOTHING)
+    user = models.ForeignKey(
+        'Uzytkownik', models.DO_NOTHING, blank=True, null=True)
     sciezka_do_pliku = models.TextField()
     latitude = models.DecimalField(
                 max_digits=9, decimal_places=6, null=True, blank=True)
