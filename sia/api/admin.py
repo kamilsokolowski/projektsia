@@ -13,7 +13,16 @@ class ZgloszenieAdmin(admin.ModelAdmin):
 
     fieldsets = (
         (None, {
-            'fields': ('user', 'data_czas', 'sciezka_do_pliku', 'opis','latitude', 'akceptacja', 'longitude',)
+            'fields': (
+                'user',
+                'rodzaj_zgloszenia',
+                'data_czas', 
+                'sciezka_do_pliku', 
+                'opis',
+                'latitude', 
+                'akceptacja', 
+                'longitude',
+            )
         }),
     )
 

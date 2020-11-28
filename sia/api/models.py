@@ -17,12 +17,16 @@ class OcenyZgloszen(models.Model):
 
 
 class RodzajZgloszenia(models.Model):
+    rodzaj_zgloszenia_id = models.AutoField(primary_key=True)
     kategoria = models.TextField()
-    waznosc = models.IntegerField()
+    priorytet = models.IntegerField()
 
     class Meta:
         managed = True
         db_table = 'RodzajZgloszenia'
+    
+    def __str__(self):
+        return f"{self.kategoria}"
 
 
 class Uzytkownik(models.Model):
@@ -53,7 +57,11 @@ class Miejsce(models.Model):
 class Zgloszenia(models.Model):
     zgloszenie_id = models.AutoField(primary_key=True)
     user = models.ForeignKey(
-        'Uzytkownik', models.DO_NOTHING, blank=True, null=True)
+        'Uzytkownik', models.DO_NOTHING, blank=True, null=True
+    )
+    rodzaj_zgloszenia = models.ForeignKey(
+        'RodzajZgloszenia', models.DO_NOTHING, blank=True, null=True
+    )
     sciezka_do_pliku = models.TextField()
     latitude = models.DecimalField(
                 max_digits=9, decimal_places=6, null=True, blank=True)

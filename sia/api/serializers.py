@@ -22,6 +22,7 @@ class RodzajZgloszeniaSerializer(serializers.ModelSerializer):
 
 class ZgloszeniaSerializer(serializers.ModelSerializer):
     nick = serializers.SerializerMethodField('get_nick_name')
+    rodzaj = serializers.SerializerMethodField('get_rodzaj_zgloszenia')
 
     class Meta:
         model = Zgloszenia
@@ -29,6 +30,8 @@ class ZgloszeniaSerializer(serializers.ModelSerializer):
             'zgloszenie_id', 
             'user', 
             'nick',
+            'rodzaj_zgloszenia',
+            'rodzaj',
             'sciezka_do_pliku',
             'latitude',
             'longitude',
@@ -36,10 +39,12 @@ class ZgloszeniaSerializer(serializers.ModelSerializer):
             'akceptacja',
             'opis'
         ]
-        #fields = '__all__'
     
     def get_nick_name(self, obj):
         return str(obj.user)
+
+    def get_rodzaj_zgloszenia(self, obj):
+        return str(obj.rodzaj_zgloszenia)
 
 class UploadSerializer(serializers.Serializer):
     file_uploaded = FileField()
