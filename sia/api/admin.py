@@ -9,12 +9,13 @@ admin.site.register(RodzajZgloszenia)
 admin.site.register(Uzytkownik)
 
 class ZgloszenieAdmin(admin.ModelAdmin):
-    list_display = ('user', 'sciezka_do_pliku','opis', 'latitude', 'longitude',)
+    list_display = ('user', 'tytul_zgloszenia', 'sciezka_do_pliku','opis', 'latitude', 'longitude',)
 
     fieldsets = (
         (None, {
             'fields': (
                 'user',
+                'tytul_zgloszenia',
                 'rodzaj_zgloszenia',
                 'data_czas', 
                 'sciezka_do_pliku', 

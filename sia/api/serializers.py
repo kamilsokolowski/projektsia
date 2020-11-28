@@ -27,8 +27,9 @@ class ZgloszeniaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Zgloszenia
         fields = [
-            'zgloszenie_id', 
-            'user', 
+            'zgloszenie_id',
+            'tytul_zgloszenia',
+            'user',
             'nick',
             'rodzaj_zgloszenia',
             'rodzaj',

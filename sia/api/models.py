@@ -56,13 +56,14 @@ class Miejsce(models.Model):
 
 class Zgloszenia(models.Model):
     zgloszenie_id = models.AutoField(primary_key=True)
+    tytul_zgloszenia = models.TextField(null=True)
     user = models.ForeignKey(
         'Uzytkownik', models.DO_NOTHING, blank=True, null=True
     )
     rodzaj_zgloszenia = models.ForeignKey(
         'RodzajZgloszenia', models.DO_NOTHING, blank=True, null=True
     )
-    sciezka_do_pliku = models.TextField()
+    sciezka_do_pliku = models.TextField(blank=True, null=True)
     latitude = models.DecimalField(
                 max_digits=9, decimal_places=6, null=True, blank=True)
     longitude = models.DecimalField(
