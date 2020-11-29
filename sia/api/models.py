@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 
+
 class OcenyZgloszen(models.Model):
     ocena_zgloszenia_id = models.AutoField(primary_key=True)
     zgloszenie          = models.ForeignKey('Zgloszenia', models.DO_NOTHING)
@@ -40,6 +41,10 @@ class Uzytkownik(models.Model):
     uprawnienia     = models.IntegerField()
     liczba_zgloszen = models.IntegerField()
     haslo           = models.TextField()
+    latitude        = models.DecimalField(
+                      max_digits=9, decimal_places=6, null=True, blank=True)
+    longitude       = models.DecimalField(
+                      max_digits=9, decimal_places=6, null=True, blank=True)
 
     class Meta:
         managed = True
@@ -65,11 +70,11 @@ class Zgloszenia(models.Model):
     akceptacja          = models.IntegerField()
     opis                = models.TextField()
 
-    def __str__(self):
-        return "Zgloszenie nr {}, Opis : {}".format(str(self.zgloszenie_id),str(self.opis))
-
     class Meta:
         managed  = True
         db_table = 'Zgloszenia'
+    
+    def __str__(self):
+        return "Zgloszenie nr {}, Opis : {}".format(str(self.zgloszenie_id),str(self.opis))
 
 
