@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="Sebastian Łeska">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <link rel="stylesheet" type="text/css" href="/assets/styles/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/assets/styles/style.css"/>
+        <link rel="stylesheet" type="text/css" href="/assets/styles/form.css"/>
+        <link rel="stylesheet" type="text/css" href="/assets/styles/daterangepicker.css"/>
+        <link rel="stylesheet" type="text/css" href="/assets/styles/select2.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/assets/styles/font-awesome.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/assets/styles/material-design-iconic-font.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/assets/styles/map.css"/>
+        <title>SIA - System Informowania o Awariach</title>
+    </head>
+    <script>
+		var loadFile = function(event)
+		{
+			var image = document.getElementById('uploaded-photo');
+			image.src = URL.createObjectURL(event.target.files[0]);
+		};
+	</script>
+<body>
+    <%- include('partials/nav-logged.ejs') %> 
+
+<!-- Content -->
+<div class="container pb-5" style="padding-top:106px">
+            <div class="wrapper wrapper--w680">
+                <div class="card card-1">
+                    <div class="card-body">
+                        <h2 class="title" style="width:100%;text-align: center;">Formularz zgłoszeniowy</h2>
+                        <form method="POST" action="/form">
+                            <div class="input-group">
+                                <input class="input--style-1" type="text" placeholder="Tytuł zgłoszenia" name="title">
+                            </div>
+                            <div class="input-group">
+
+                                <div style="width:150px;padding:0" class="col rs-select2 js-select-simple select--no-search">
+                                    <label>Kategoria zgłoszenia</label>
+                                    <select name="class">
+                                        <option disabled="disabled" selected="selected">Kategoria zgłoszenia</option>
+                                        <option>Transport</option>
+                                        <option>Wodociągi</option>
+                                        <option>Klęski żywiołowe</option>
+                                    </select>
+                                    <div class="select-dropdown"></div>
+                                </div>
+
+                                <div style="width:150px" class="col rs-select2 js-select-simple select--no-search">
+                                    <label>Nickname</label>
+                                    <input class="input--style-1" type="text" placeholder="Nickname..." name="nickname">
+                                </div>
+                            </div>
+
+                                    <textarea name="opis" class="w-100" style="height:300px;border:2px solid #CCC;resize: none; padding:10px; box-sizing: border-box; color:#555" placeholder="Treść zgłoszenia..."></textarea>
+                                    <input type="text" name="latitude" id="lat" value=""><br>
+                                    <input type="text" name="longtiude" id="lon" value="">
+                                    <p id="id3"> </p>
+                        
+                                    <div id="map"></div>
+                                    <img style="width:100%;display:block; margin:10px auto 0 auto;" id="uploaded-photo" src=""/>
+
+                                    <input  type="file" id="file-upload-btn" accept="image/*" name="image" hidden onchange="loadFile(event)"/>
+                                    <label style="float:left; text-align: center;" class="col file-upload-label" for="file-upload-btn" onchange="loadFile(event)">Załącz zdjęcie</label>
+
+                                <button class="col btn btn--radius btn--green" type="submit">Dodaj zgłoszenie</button>
+                          
+                        </form>
+
+                        
+                    </div>
+                </div>
+            </div>
+          
+</div>
+<!-- Content-End -->
+
+    <%- include('partials/footer.ejs') %>
+    <%- include('partials/scripts.ejs') %>
+
+    <script src="/assets/scripts/daterangepicker.js"></script>
+    <script src="/assets/scripts/moment.min.js"></script>
+    <script src="/assets/scripts/select2.min.js"></script>
+    <script src="/assets/scripts/global.js"></script>
+    <script src="/assets/scripts/map.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3bdb9tl-GUutQyg3kh-jTQuJl48PwOYY&callback=initMap&libraries=&v=weekly"></script>
+        <script>
+            initMap(52.228781, 21.003926, true, 10);
+        </script>
+</body>
+</html>

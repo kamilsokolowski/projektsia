@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta author="Mateusz Sokolnicki">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="/assets/styles/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/assets/styles/style.css"/>
+    <title>SIA - System Informowania o Awariach</title>
+</head>
+<body>
+    <%- include('partials/nav.ejs') %>
+    <%- include('partials/jumbotron.ejs') %> 
+
+<!-- Content -->
+    <div class="container">
+
+        <h1 class="display-6 pb-4 pt-3">Najnowsze zgłoszenia</h1>
+        <div class="row text-center pb-5">
+        <% news_list.forEach((element, idx) => { %>
+          <% if(element.akceptacja == 1){ %> 
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100">
+              <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+              <div class="card-body">
+                <h4 class="card-title"><%= element.tytul_zgloszenia%></h4>
+                <p class="card-text center"><%= element.opis.split(" ").slice(0,25).join(" ") %> ...</p>
+              </div>
+              <div class="card-footer">
+                <a href="/details/<%= element.zgloszenie_id %>" class="btn btn-primary">Więcej...</a>
+              </div>
+            </div>
+          </div>
+
+        <% }}); %>
+          
+    
+        </div>
+    </div>
+<!-- Content-End -->
+
+    <%- include('partials/footer.ejs') %>
+<!-- Scripts -->
+    <%- include('partials/scripts.ejs') %>
+<!-- Scripts-End-->
+</body>
+</html>

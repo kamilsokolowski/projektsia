@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="utf-8">
+        <meta author="Janusz SADOWSKI">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Panel</title>
+   
+     <link rel="stylesheet" type="text/css" href="/assets/styles/registration-style.css"/>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+</head>
+<body>
+
+     <div class="container">
+     
+        
+
+       
+        <% if(typeof alert != 'undefined') { %>
+            <% alert.forEach(function(error) { %>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <%= error.msg %>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                  </div>
+            <% }) %>
+        <% } %>
+        <div class="flexbox-container">
+        <div class="flexbox-container form-container">
+        <div id="title">System<br> informowania o awariach</div>
+        <form action="/register" method="POST">
+            <div class="form-group">
+                <label for="username" class="form-label">Nazwa użytkownika</label>
+                <input type="text" class="form-control" name="username" id="username">
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="form-label">Adres email</label>
+                <input type="text" class="form-control" name="email" id="email">
+            </div>
+     
+            <div class="form-group">
+                <label for="name" class="form-label">Imię</label>
+                <input type="text" class="form-control" name="name" id="name">
+            </div>
+          
+            <div class="form-group">
+                <label for="surname" class="form-label">Nazwisko</label>
+                <input type="text" class="form-control" name="surname" id="surname">
+            </div>
+            <div class="form-group">
+                <label for="password" class="form-label">Hasło</label>
+                <input type="password" class="form-control" name="password" id="password">
+            </div>
+            <div class="form-group">
+                <label for="password1" class="form-label">Potwierdź hasło</label>
+                <input type="password" class="form-control" name="password1" id="password1"><br>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Prześlij</button>
+        </form>
+        </DIV>
+    </div>
+</body>
+</html>

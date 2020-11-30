@@ -1,0 +1,27 @@
+{
+  "name": "sia",
+  "version": "1.0.0",
+  "description": "SIA project.",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Mateusz SOKOLNICKI & Sebastian ŁESKA & Janusz SADOWSKI",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "bcrypt": "^5.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-flash": "0.0.2",
+    "express-session": "^1.17.1",
+    "express-validator": "^6.7.0",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "qs": "^6.7.0",
+    "superagent": "^6.1.0",
+    "xmlhttprequest": "^1.8.0"
+  }
+}

@@ -1,0 +1,79 @@
+++<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta author="Sebastian Łeska oraz Janusz SADOWSKI">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/assets/styles/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/assets/styles/style.css"/>
+        <link rel="stylesheet" type="text/css" href="/assets/styles/stars.css"/>
+        <link rel="stylesheet" type="text/css" href="/assets/styles/map.css"/>
+        <title>SIA - System Informowania o Awariach</title>
+    </head>
+<body>
+    <%- include('partials/nav-logged.ejs') %>
+
+<!-- Content -->
+<div class="container" style="padding-top:56px">
+        <div>
+
+            <!-- the actual blog post: title/author/date/content -->
+            <h1 class="pt-5"><%= details.tytul_zgloszenia %> </h1>
+            <p class="float-left">Posted by: <%= details.nick %> </p>
+            <p class="float-right mt-1">Posted on <%= details.data_czas.substring(0,10) %> at <%= details.data_czas.substring(11,19) %></p><br><br>
+        <div class="stars" data-rating="0">
+        <p>Oceń:</p>
+        <span class="star" >&nbsp;</span>
+        <span class="star">&nbsp;</span>
+        <span class="star">&nbsp;</span>
+        <span class="star">&nbsp;</span>
+        <span class="star">&nbsp;</span>
+        <div class="form-group" style="display: none;>
+            <label for="mark" class="form-label">Ocna</label>
+            <input type="text" class="form-control" name="mark" id="mark">
+        </div>   
+        <p>Średnia Ocena: </p>
+        <p id="id1"></p>
+        </div>
+        
+        
+
+
+            <div style="clear:both"></div>
+            <div class="line"></div>
+            
+            <img src="http://placehold.it/1400x500" class="img-fluid mt-4">
+
+            <p class="mt-4 text-justify">
+                <%= details.opis %> 
+            </p>
+
+            <div id="map"></div>
+            <div class="line mt-4"></div>
+            <p class="mt-4 pb-2">
+                Category: 
+                <a href=""><span class="badge badge-info">Bootstrap</span></a> 
+                <a href=""><span class="badge badge-info">Web</span></a> 
+                <a href=""><span class="badge badge-info">CSS</span></a> 
+                <a href=""><span class="badge badge-info">HTML</span></a>
+            </p>
+        </div>
+
+</div>
+<!-- Content-End -->
+
+
+    <%- include('partials/footer.ejs') %> 
+    
+    <!-- Scripts -->
+        <%- include('partials/scripts.ejs') %> 
+        <script src="/assets/scripts/stars.js"></script>
+        <script src="/assets/scripts/map.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3bdb9tl-GUutQyg3kh-jTQuJl48PwOYY&callback=initMap&libraries=&v=weekly"></script>
+        <script>
+            initMap(<%= details.latitude %>, <%= details.longitude %>, false, 14);
+        </script>
+    <!-- Scripts-End-->
+</body>
+</html>

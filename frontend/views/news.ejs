@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <meta author="Mateusz Sokolnicki">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <link rel="stylesheet" type="text/css" href="/assets/styles/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/assets/styles/style.css"/>
+        <title>SIA - System Informowania o Awariach</title>
+    </head>
+<body>
+    <%- include('partials/nav.ejs') %> 
+
+<!-- Content -->
+<div class="container" style="padding-top:56px;">
+    <h1 class="my-4">Awarie
+      <small>- lista wszystkich</small>
+    </h1>
+
+    <% news_list.reverse().forEach((element, index) => { %> 
+      <% if(element.akceptacja == 1){ %> 
+        <div class="card mb-4">
+          <img class="card-img-top" src="http://placehold.it/750x200" alt="Card image cap">
+          <div class="card-body">
+            <h2 class="card-title"><%= element.tytul_zgloszenia %></h2>
+            <p class="card-text"><%= element.opis.split(" ").slice(0, 100).join(" ") %> ...</p>
+            <a href="details/<%= element.zgloszenie_id %>" class="btn btn-primary">Read More &rarr;</a>
+          </div>
+          <div class="card-footer text-muted">
+            Posted on <%= element.data_czas.substring(0,10) %> at <%= element.data_czas.substring(11,19) %> by 
+            <a href="#">Start Bootstrap</a>
+          </div>
+        </div>
+      <% } %> 
+    <% }); %>
+
+</div>
+<!-- Content-End -->
+
+    <%- include('partials/footer.ejs') %>
+    <%- include('partials/scripts.ejs') %>
+</body>
+</html>
